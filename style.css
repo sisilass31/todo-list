@@ -1,0 +1,232 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --vert-pastel: #96e6b3;
+  --vert: #568259;
+  --light-vert: #ccfccb;
+  --white: #fff;
+  --dark-grey: #252525;
+  --light-grey: #888;
+  --background: #1f1f1f;
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+  background-color: var(--background);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+  color: var(--white);
+  padding: 20px;
+}
+
+.container {
+  background-color: var(--dark-grey);
+  box-shadow: inset 0 0px 4px hsla(0, 0%, 65%, 0.1);
+  padding: 30px;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 600px;
+  position: relative;
+  z-index: 1;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.input-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+input[type="text"] {
+  flex: 1;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 16px;
+  border: none;
+  color: var(--white);
+  background-color: var(--grey);
+  box-shadow: inset 0 0px 4px hsla(0, 0%, 65%, 0.1);
+  margin-right: 10px;
+  outline: none;
+}
+
+button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+}
+
+button:hover {
+  background-color: var(--vert);
+}
+
+.progress-container {
+  margin-bottom: 20px;
+}
+
+.progress {
+  background: #f1fffa;
+  border-radius: 8px;
+  height: 8px;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.progress-bar {
+  height: 100%;
+  background: var(--vert);
+  width: 0;
+  border-radius: 8px;
+  transition: width 0.3s ease;
+}
+
+.progress-text {
+  text-align: right;
+  font-size: 14px;
+
+  margin-top: 5px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px;
+  margin-bottom: 10px;
+  background-color: #3a3a3a;
+  box-shadow: inset 0 0px 4px hsla(0, 0%, 65%, 0.1);
+  border-radius: 8px;
+  position: relative;
+}
+
+li.completed span,
+li.completed button.edit,
+li.completed button.delete {
+  text-decoration: line-through;
+}
+
+li.completed span {
+  color: var(--light-grey);
+}
+
+/* Cache la case à cocher native */
+input[type="checkbox"] {
+  display: none;
+}
+
+/* Style général pour le label */
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 24px; /* Taille de l'icône */
+  position: relative;
+  margin-right: 10px;
+}
+
+/* Icône pour l'état non coché */
+.checkbox-label::before {
+  content: "\f096"; /* Code de la case non cochée */
+  font-family: "Font Awesome 5 Free"; /* Assure que FontAwesome est utilisé */
+  font-weight: 900; /* Poids de la police pour les icônes FontAwesome */
+  color: var(--background); /* Couleur par défaut */
+}
+
+/* Icône pour l'état coché */
+input[type="checkbox"]:checked + .checkbox-label::before {
+  content: "\f14a"; /* Code de la case cochée */
+  color: var(--vert); /* Couleur de l'icône cochée */
+}
+
+button.edit,
+button.delete {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  color: var(--vert-pastel);
+  transition: color 0.3s ease;
+  width: fit-content;
+}
+
+button.edit:hover {
+  color: var(--light-vert);
+}
+
+button.delete {
+  color: var(--light-vert);
+  margin-right: 20px;
+}
+
+button.delete:hover {
+  color: var(--vert);
+}
+
+#taskList span {
+  width: 300px;
+}
+
+.victory-message {
+  margin-bottom: 20px;
+  border-radius: 8px;
+  font-size: 16px;
+  color: var(--vert);
+  display: none; /* Hidden by default */
+}
+
+/*responsive*/
+
+@media screen and (max-width: 390px) {
+  input[type="text"] {
+    width: 100px;
+    font-size: 14px;
+  }
+  ul {
+    font-size: 12px;
+  }
+  button.edit,
+  button.delete {
+    font-size: 12px;
+  }
+  .checkbox-label {
+    font-size: 20px;
+  }
+  .victory-message {
+    font-size: 14px;
+  }
+  h1 {
+    font-size: 25px;
+  }
+  button.delete {
+    margin-right: 0px;
+    margin-left: 6px;
+  }
+  .checkbox-label {
+    font-size: 16px;
+  }
+  #taskList span {
+    margin-right: 5px;
+  }
+}
